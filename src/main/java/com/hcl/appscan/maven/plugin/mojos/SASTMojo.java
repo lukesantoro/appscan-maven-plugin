@@ -53,6 +53,24 @@ public abstract class SASTMojo extends AppScanMojo {
 	private Boolean m_isStaticAnalysisOnly;
 
 	/**
+	 * Enable Secrets scanning.
+	 */
+	@Parameter (property="enableSecrets", alias="enableSecrets", defaultValue="false", required=false, readonly=false) //$NON-NLS-1$ //$NON-NLS-2$
+	private Boolean m_enableSecrets;
+
+	/**
+	 * Enable Secrets only scanning.
+	 */
+	@Parameter (property="secretsOnly", alias="secretsOnly", defaultValue="false", required=false, readonly=false) //$NON-NLS-1$ //$NON-NLS-2$
+	private Boolean m_enableSecretsOnly;
+
+	/**
+	 * Disable Secrets scanning.
+	 */
+	@Parameter (property="disableSecrets", alias="disableSecrets", defaultValue="false", required=false, readonly=false) //$NON-NLS-1$ //$NON-NLS-2$
+	private Boolean m_disableSecrets;
+
+	/**
 	 * Ignore untrusted certificates when connecting to AppScan 360. Only intended for testing purposes. Not applicable to AppScan on Cloud.
 	 */
 	@Parameter (property="acceptssl", alias="acceptssl", defaultValue="false", required=false, readonly=false) //$NON-NLS-1$ //$NON-NLS-2$
@@ -74,6 +92,9 @@ public abstract class SASTMojo extends AppScanMojo {
 		m_scanManager.setIsSourceCodeOnlyEnabled(m_isSourceCodeOnly);
 		m_scanManager.setIsOpenSourceOnlyEnabled(m_isOpenSourceOnly);
 		m_scanManager.setIsStaticAnalysisOnlyEnabled(m_isStaticAnalysisOnly);
+		m_scanManager.setIsSecretsScanningEnabled(m_enableSecrets);
+		m_scanManager.setIsSecretsScanningOnlyEnabled(m_enableSecretsOnly);
+		m_scanManager.setIsSecretsScanningDisabled(m_disableSecrets);
 	}
 	
 	@Override
