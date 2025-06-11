@@ -1,5 +1,5 @@
 /**
- * © Copyright HCL Technologies Ltd. 2017-2024. 
+ * © Copyright HCL Technologies Ltd. 2017-2025. 
  * LICENSE: Apache License, Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
  */
 
@@ -92,9 +92,9 @@ public abstract class SASTMojo extends AppScanMojo {
 		m_scanManager.setIsSourceCodeOnlyEnabled(m_isSourceCodeOnly);
 		m_scanManager.setIsOpenSourceOnlyEnabled(m_isOpenSourceOnly);
 		m_scanManager.setIsStaticAnalysisOnlyEnabled(m_isStaticAnalysisOnly);
-		m_scanManager.setIsSecretsScanningEnabled(m_enableSecrets);
-		m_scanManager.setIsSecretsScanningOnlyEnabled(m_enableSecretsOnly);
-		m_scanManager.setIsSecretsScanningDisabled(m_disableSecrets);
+		if(m_enableSecrets){ m_scanManager.setIsSecretsScanningEnabled(m_enableSecrets); }
+		if(m_enableSecretsOnly){ m_scanManager.setIsSecretsScanningOnlyEnabled(m_enableSecretsOnly); }
+		if(m_disableSecrets){ m_scanManager.setIsSecretsScanningDisabled(m_disableSecrets); }
 	}
 	
 	@Override
